@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './randomChar.css';
 import gotService from '../../services/gotService';
 import Spinner from '../spinner';
-import ErrorMessage from '../errorMessage';
+import ErrorMessage from '../error/errorMessage';
 
 export default class RandomChar extends Component {
 
@@ -10,39 +10,39 @@ export default class RandomChar extends Component {
         super();
         this.updateChar();
     }
-
     gotService = new gotService();
     state = {
         char: {},
         loading: true,
         error: false
-    }
+    };
 
     onCharLoarded = (char) => {
         this.setState({
             char, 
             loading: false
-        })
+        });
     }
 
     onError = (err) => {
         this.setState({
             error: true,
             loading: false
-        })
+        });
     }
 
     updateChar() {
-        //const id = Math.floor(Math.random()*140 + 25);
-        const id = 130000;
-        this.gotService.getCharacter(id)
+        const id = Math.floor(Math.random()*140 + 25);
+        //const id = 130000;
+        this.gotService
+            .getCharacter(id)
             .then(this.onCharLoarded)
             .catch(this.onError);
     }
 
     render() {
-        const { char, loading, error } = this.state;
-
+        
+    const { char, loading, error } = this.state;
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
     const content = !(loading || error) ? <View char={char}/> : null;

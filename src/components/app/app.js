@@ -1,12 +1,30 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import ErrorMessage from '../error';
+import PersonDetails from '../personDetails';
 
+import './app.css';
 
-const App = () => {
+export default class App extends Component {
+    state = {
+        showRandomChar: true,
+        error: false
+    }
+    toggleRandomChar = () => {
+        this.setState((state) => {
+            return {
+                showRandomChar: !state.showRandomChar
+            }
+        });
+    }
+render() {
+    if (this.state.error) {
+        return <ErrorMessage/>
+    }
+const char = this.state.showRandomChar ? <RandomChar/> : null;
     return (
         <> 
             <Container>
@@ -15,7 +33,10 @@ const App = () => {
             <Container>
                 <Row>
                     <Col lg={{size: 5, offset: 0}}>
-                        <RandomChar/>
+                    {char}
+                   <button 
+                        className="toggle-btn"
+                        onClick={this.toggleRandomChar}>Toggle random character</button>
                     </Col>
                 </Row>
                 <Row>
@@ -23,12 +44,12 @@ const App = () => {
                         <ItemList />
                     </Col>
                     <Col md='6'>
-                        <CharDetails />
+                        <PersonDetails />
                     </Col>
                 </Row>
             </Container>
         </>
     );
+  }
 };
 
-export default App;
