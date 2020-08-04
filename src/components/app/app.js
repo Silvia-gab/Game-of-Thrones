@@ -9,19 +9,10 @@ import CharacterPage from '../characterPage';
 import './app.css';
 
 export default class App extends Component {
-
     state = {
         showRandomChar: true,
         error: false
-    };
-
-    componentDidCatch() {
-        console.log('error');
-        this.setState({
-            error: true
-        })
     }
-
     toggleRandomChar = () => {
         this.setState((state) => {
             return {
@@ -32,12 +23,9 @@ export default class App extends Component {
 
 render() {
 const char = this.state.showRandomChar ? <RandomChar/> : null;
-
-
     if (this.state.error) {
         return <ErrorMessage/>
     }
-
     return (
         <> 
             <Container>
