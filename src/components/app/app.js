@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ErrorMessage from '../error';
-import {CharacterPage, BooksPage, HousePage, BooksItem} from '../pages';
+import ErrorMessage from '../errorMessage';
+import {CharacterPage, BooksPage, HousesPage, BooksItem} from '../pages';
 import gotService from '../../services/gotService';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -57,17 +57,18 @@ const char = this.state.showRandomChar ? <RandomChar/> : null;
                         onClick={this.toggleRandomChar}>Toggle random character</button>
                     </Col>
                 </Row>
-                <Router path='/' component={() => <h1>Welcome to GOT BD</h1>} exact/>
-                <Router path='/characters' component={CharacterPage}/>
-                <Router path='/books' component={BooksPage} exact/>
-                <Router path='/books/:id' render={({match}) => {
+                <Route path='/' component={() => <h1>Welcome to GOT BD</h1>} exact/>
+                <Route path='/characters' component={CharacterPage}/>
+                <Route path='/books' component={BooksPage} exact/>
+                <Route path='/books/:id' render={({match}) => {
                     const {id} = match.params;
                     return <BooksItem bookId={id}/>}}/>
-                    <Router path='/houses' component={HousePage} />                <CharacterPage/>
+                    <Route path='/houses' component={HousesPage} />                <CharacterPage/>
             </Container>
         </div>
         </Router>
-    );
+    )
   }
+  
 };
 
