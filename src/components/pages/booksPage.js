@@ -19,7 +19,7 @@ export class BooksPage extends Component {
     }
 
     componentDidCatch() {
-    	this.setDtate({
+    	this.setState({
     		error: true
     	})
     }

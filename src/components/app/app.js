@@ -63,10 +63,10 @@ const char = this.state.showRandomChar ? <RandomChar/> : null;
                 <Route path='/books/:id' render={({match}) => {
                     const {id} = match.params;
                     return <BooksItem bookId={id}/>}}/>
-                    <Route path='/houses' component={HousesPage} />                <CharacterPage/>
+                    <Route path='/houses' component={HousesPage} />
             </Container>
         </div>
-        </Router>
+      </Router>
     )
   }
   

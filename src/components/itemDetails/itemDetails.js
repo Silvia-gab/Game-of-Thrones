@@ -15,7 +15,7 @@ export {
     Field
 };
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
 
 
     state = {
@@ -27,7 +27,7 @@ export default class PersonDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.charId !== prevProps.itemId) {
+        if (this.props.itemId !== prevProps.itemId) {
             this.updateItem();
         }
     }

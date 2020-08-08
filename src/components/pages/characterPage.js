@@ -9,7 +9,7 @@ export default class CharacterPage extends Component {
 	gotService= new gotService();
 
 	state = {
-		selectedChar: 130,
+		selectedChar: null,
 		error: false
 	}
 
@@ -23,7 +23,7 @@ export default class CharacterPage extends Component {
 	    this.setState({
 	        error: true
 	    })
-      }
+     }
 
 	render() {
 		if (this.state.error) {
@@ -48,7 +48,7 @@ export default class CharacterPage extends Component {
 					</ItemDetails>
 				) 
 
-				return (
+			return (
 				<RowBlock left={itemList} right={itemDetails} />
 		)
 	}

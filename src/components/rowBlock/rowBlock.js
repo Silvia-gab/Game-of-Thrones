@@ -9,8 +9,8 @@ const RowBlock = ({left, right}) => {
 			</Col>
 			<Col md='6'>
 				{right}
-				</Col>
-				</Row>
+			</Col>
+		</Row>
 	)
 }
 
